@@ -1,0 +1,15 @@
+{
+	"templateDirectory": "Documents/Projects/Bash/MSTS/templates",
+	"targets": [
+		{
+			"template": "test",
+			"variables": [
+				{
+					"name": "var1",
+					"type": "string",
+					"docs": "Hello, I am a document"
+				}
+			]
+		}
+	]
+}
