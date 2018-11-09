@@ -1,6 +1,6 @@
 #!/bin/bash
 
 function msts() {
-	echo "World"
+	echo 'World'
 	OUTPUT=""
 }

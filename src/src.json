@@ -1,15 +1,49 @@
 {
 	"templateDirectory": "Documents/Projects/Bash/MSTS/templates",
-	"targets": [
+	"tasks": [
 		{
-			"template": "test",
-			"variables": [
+			"targets": [
 				{
-					"name": "var1",
-					"type": "string",
-					"docs": "Hello, I am a document"
+					"templates": ["test", "test2"],
+					"destination": "Documents/Projects/Bash/MSTS/tests/test1.txt"
+				},
+				{
+					"templates": ["test2", "test"],
+					"destination": "Documents/Projects/Bash/MSTS/tests/test1B.txt"
 				}
-			]
+			],
+			"variables": {
+				"apiNodeName": "Root",
+				"apiVariables": [
+					{
+						"name": "var1",
+						"type": "string",
+						"docs": "Hello, I am a document"
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["test", "test2"],
+					"destination": "Documents/Projects/Bash/MSTS/tests/test2.txt"
+				},
+				{
+					"templates": ["test2", "test"],
+					"destination": "Documents/Projects/Bash/MSTS/tests/test2B.txt"
+				}
+			],
+			"variables": {
+				"apiNodeName": "Root",
+				"apiVariables": [
+					{
+						"name": "var1",
+						"type": "string",
+						"docs": "Hello, I am a document"
+					}
+				]
+			}
 		}
 	]
 }
