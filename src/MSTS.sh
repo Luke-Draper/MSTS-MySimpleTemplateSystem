@@ -66,6 +66,7 @@ echo "$HR"
 TEMPLATE_DIRECTORY="$( jq -n --argjson data "$SOURCE_JSON" '$data.templateDirectory')"
 TEMPLATE_DIRECTORY="${TEMPLATE_DIRECTORY%\"}"
 TEMPLATE_DIRECTORY="${TEMPLATE_DIRECTORY#\"}"
+JSON_CURRENT_POSITION='$data.'
 
 TEMPLATE_FUNCTIONS=()
 TEMPLATE_NAMES=()
@@ -127,6 +128,20 @@ runInternalTemplate() {
 	fi
 }
 
+CURRENT_JSON_TO_BASH_ARRAY=()
+
+getJSONToBashArray() {
+	# in the format 'arrayName' or 'objectWithArray.array'
+	local targetJSONArray=$1
+	local output=()
+	local index=0
+	# echo "$( jq -n --argjson data "$SOURCE_JSON" ''"$JSON_CURRENT_POSITION$targetJSONArray"'['"$index"']''')"
+	while [ "$( jq -n --argjson data "$SOURCE_JSON" ''"$JSON_CURRENT_POSITION$targetJSONArray"'['"$index"']''')" != 'null' ]; do
+		output=("${output[@]}" "$( jq -n --argjson data "$SOURCE_JSON" ''"$JSON_CURRENT_POSITION$targetJSONArray"'['"$index"']''')")
+		((++index))
+	done
+	CURRENT_JSON_TO_BASH_ARRAY=("${output[@]}")
+}
 
 
 runTemplate 'test2'
@@ -136,5 +151,9 @@ runTemplate 'test'
 runTemplate 'test2'
 
 runTemplate 'test1'
+
+echo "${CURRENT_JSON_TO_BASH_ARRAY[@]}"
+getJSONToBashArray 'tasks'
+echo "${CURRENT_JSON_TO_BASH_ARRAY[1]}"
 
 echo "$TEMPLATE_OUTPUT"
