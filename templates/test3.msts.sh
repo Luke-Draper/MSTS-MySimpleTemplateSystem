@@ -2,7 +2,7 @@
 
 function msts() {
 	echo 'World'
-	runTemplate test3
+	runTemplate test2
 	echo $CURRENT_TEMPLATE_RUN
 	OUTPUT=""
 }
