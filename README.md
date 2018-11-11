@@ -8,7 +8,7 @@ I made this to solve that problem. It is a small data transfer program that take
 
 I'm using GNU bash, version 4.4.19 on Linux Ubuntu 18.04.1 bionic. This might work on windows using git bash but I'd recommend reviewing the code beforehand.
 
-You'll also need jq. Knowing how to use it can be nice but is not required:
+You'll also need [jq](https://stedolan.github.io/jq/ "jq's homepage"). Knowing how to use it can be nice but is not required:
 
 ```Bash
 sudo apt-get install jq
