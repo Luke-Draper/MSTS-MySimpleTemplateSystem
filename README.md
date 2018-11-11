@@ -24,7 +24,7 @@ Copy the download the src folder and when you're all set up run:
 
 Your source JSON file has to follow this format in order to be understood by MSTS
 
-```JSON
+```
 {
 "templateDirectory": // Path to the file folder holding the templates
 "tasks": // Array holding objects representing a template operation in the form
